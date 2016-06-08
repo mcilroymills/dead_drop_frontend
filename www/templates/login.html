@@ -1,39 +1,28 @@
-<ion-view view-title="">
+<ion-view>
   <ion-content class="padding center account">
-    <div class='row row-center' id="landPageHeaderMain">
-
-      <div class='col-34'>
-        <img class="landingPageLogo" src="./img/deaddropsm.png"/>
-      </div>
-
-      <div class='col col-75'>
-        <h1 class="landingPageTitle">Dead Drop</h1>
-      </div>
-
+    <div class="row">
+      <img class="center" src="./img/deaddropsm.png"/>
     </div>
     <form ng-submit="login()" name='signInForm'>
-
       <div class="list">
-
         <label class="item item-input item-floating-label" id="firstFormInputField">
-          <span class="input-label">email</span>
+          <span>Email</span>
           <input name="email" type="email" placeholder="email" ng-model="user.email" required>
         </label>
         <label class="item item-input item-floating-label">
-          <span class="input-label">password</span>
+          <span>Password</span>
           <input name="password" type="password" placeholder="password" ng-model="user.password" required>
         </label>
-
         <button type="submit" class="button button-block">Login</button>
       </div>
-
     </form>
-
-    <div class="accountSignUpQuestion">
+    <div>
       <div class="row row-center">
-        <div class="col" id='signUpLinkSection' style="text-align:center">need an account?  <a href="#/signup" class='signUpLink'>sign up</a></div>
+        <div class="col" id='signUpLinkSection' style="text-align:center">Need an account?  <a ng-href="#/register" class='signUpLink'>Tap here!</a></div>
       </div>
-</div>
-
+      <div class="row row-center">
+        <div class="col" id='signUpLinkSection' style="text-align:center">Login as a guest?  <a ng-href="" ng-click="loginAsGuest()" class='signUpLink'>Tap here!</a></div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

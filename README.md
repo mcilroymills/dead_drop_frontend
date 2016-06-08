@@ -1,3 +1,7 @@
+colors: teal: #84afa3 (water)
+gray-blue #3f518c (transit line)
+mustard #B09010 {highways)}
+
 Ionic App Base
 =====================
 
@@ -13,7 +17,7 @@ For example, to start a new Ionic project with the default tabs interface, make 
 $ npm install -g ionic
 ```
 
-Then run: 
+Then run:
 
 ```bash
 $ ionic start myProject tabs

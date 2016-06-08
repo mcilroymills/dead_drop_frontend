@@ -1,4 +1,10 @@
 {
   "name": "dead_drop",
-  "app_id": ""
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/login",
+      "proxyUrl": "http://cors.api.com/api"
+    }
+  ]
 }

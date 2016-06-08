@@ -1,7 +1,8 @@
-angular.module('starter.services', [])
+angular.module('starter.services')
 
 .service('authService', ['$http', '$window', authService]);
 
+var URL = "http://dead-drop-backend.herokuapp.com/users/";
 
 function authService($http, $window) {
   var user = {};
@@ -11,7 +12,6 @@ function authService($http, $window) {
     },
     logout: function(user) {
       user = null;
-      //Should we clear all of local storage???
       $window.localStorage.clear();
     },
     register: function(user) {

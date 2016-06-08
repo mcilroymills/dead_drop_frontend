@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,6 +25,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
+  //resetting the headers client prevents the preflight invalid HTTP status code 500:
+  //this apparently clears req.body.....leave out
+  /*$httpProvider.defaults.headers.common = {};
+  $httpProvider.defaults.headers.post = {};
+  $httpProvider.defaults.headers.put = {};
+  $httpProvider.defaults.headers.patch = {};*/
+
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
@@ -37,21 +44,55 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       controller: 'loginCtrl'
     })
 
+  .state('register', {
+      url: '/register',
+      templateUrl: 'templates/register.html',
+      controller: 'registerCtrl'
+    })
+
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
-
-  // Each tab has its own nav history stack:
 
   .state('tab.dash', {
     url: '/dash',
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        controller: 'dashCtrl'
+      }
+    }
+  })
+
+  .state('tab.info', {
+    url: '/dash/info/:pin_id',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/info.html',
+        controller: 'infoCtrl'
+      }
+    }
+  })
+
+  .state('tab.pickup', {
+    url: '/dash/pickup/:pin_id',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/pickup.html',
+        controller: 'pickupCtrl'
+      }
+    }
+  })
+
+  .state('tab.newDrop', {
+    url: '/dash/new',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/newDrop.html',
+        controller: 'newDropCtrl'
       }
     }
   })
@@ -65,6 +106,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
@@ -86,6 +128,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/login');
 
 });
