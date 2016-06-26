@@ -4,7 +4,7 @@ angular.module('starter.services')
 
 function crudService($http) {
 
-  var URL = "http://localhost:3000/";
+  var URL = "https://dead-drop-backend.herokuapp.com/api/";
 
   return {
     getAllPins: function (token) {
